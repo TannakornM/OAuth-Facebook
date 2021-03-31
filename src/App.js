@@ -1,14 +1,48 @@
 import logo from './logo.svg';
-import React from 'react';
+import React, { Component, useState } from 'react';
 import './App.css';
 // import Map from './Map'
-import Facebook from './components/Facebook'
+import {BrowserRouter, Router, Route, Link, Redirect} from 'react-router-dom'
+import Facebook  from './components/Facebook'
 import PeopleList from './components/PeopleList'
+import Login from './components/Login'
+import FacebookLoginWithButton from 'react-facebook-login';
 
-function App() {
+class App extends React.Component {
+  facebookResponse = (response) => { console.log( response ); this.setState( {...this.state, user: response } ) }
+  constructor(props) {
+    super(props)
+      this.state = {user: {}}
+    }
+    componentDidMount() {
+      this.facebookResponse()
+    }
+
+  render() {  
+    if (this.state.user == null) {
+      return (
+        <div>
+          <Login facebookResponse={this.facebookResponse}/>
+        </div>
+
+      );
+    }
+    return (
+      <div>
+        <div>
+          <Route exact path="/" component={PeopleList} />
+          <Route path="/login" component={Login} />
+        </div>
+      </div>
+    )
+  }
+}
+export default App
+
+/*function App() {
   return (
     <div className="App">
-      <Facebook/>
+      <Facebook />
     </div>
   );
 }
@@ -21,4 +55,4 @@ function PeopleL() {
   );
 }
 
-export {App, PeopleL};
+export {App, PeopleL};*/

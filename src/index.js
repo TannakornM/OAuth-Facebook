@@ -1,11 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, {render} from 'react-dom';
 import './index.css';
-import {App, PeopleL} from './App';
+import {BrowserRouter, Router, Route, Link} from 'react-router-dom'
+import {browserHistory} from 'react-router'
+import App from './App';
+//import * as serviceWorker from ''
 
-ReactDOM.render( 
+render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.querySelector('#root')
+)
+
+//serviceWorker.unregister();
+
+/*ReactDOM.render( 
   <React.StrictMode>
-    <App />,<PeopleL/>
+    <Appp />,<PeopleL/>
   </React.StrictMode>,
-  document.getElementById('root'));
+  document.getElementById('root'));*/
 

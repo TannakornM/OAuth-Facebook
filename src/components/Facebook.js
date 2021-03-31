@@ -1,53 +1,65 @@
-import React, { useState } from 'react';
-import FacebookLogin from 'react-facebook-login';
+import React, { Component, useState } from 'react';
+import FacebookLoginWithButton from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
 import '../App.css';
 
-function App() {
-  
-  const [login, setLogin] = useState(false);
-  const [data, setData] = useState({});
-  const [picture, setPicture] = useState('');
-
-  const responseFacebook = (response) => {
-    console.log(response);
-    setData(response);
-    setPicture(response.picture.data.url);
-    if (response.accessToken) {
-      setLogin(true);
-    } else {
-      setLogin(false);
-    }
-  }
-
-  return (
-    <div class="container">
-      <Card style={{ width: '300px' }}>
-        <Card.Header>
-          { !login && 
-            <FacebookLogin
-              appId="637001937118804"
-              autoLoad={true}
-              fields="name,email,picture"
-              scope="public_profile,user_friends"
-              callback={responseFacebook}
-              icon="fa-facebook" />
-          }
-          { login &&
-            <Image src={picture} roundedCircle />
-          }
-        </Card.Header>
-        { login &&
-          <Card.Body>
-            <Card.Title>{data.name}</Card.Title>
-            <Card.Text>
-              {data.email}
-            </Card.Text>
-          </Card.Body>
-        }
-      </Card>
-    </div>
-  );
+const componentClicked = () => {
+  console.log( "Clicked!" )
+  console.log(NameFB)
 }
 
-export default App;
+const FBname = React.createContext('Facebook Name');
+
+const LoginButton = ({facebookResponse}) => (
+  <FacebookLoginWithButton
+    appId="637001937118804"
+    // autoLoad
+    fields="name,email,picture"
+    onClick={componentClicked}
+    callback={facebookResponse}
+    icon="fa-facebook"/>
+  )
+
+
+const UserScreen = ({user})  => (
+  <> <FBname.Provider value={user.name} /> 
+  <Card style={{ width: '300px' }}>
+    <Card.Header>
+    <Image src={user.picture.data.url}  roundedCircle />
+    </Card.Header>
+    <Card.Body>
+    <Card.Title>Welcome {user.name}!</Card.Title>
+    <Card.Text>{ user.email }</Card.Text>
+    </Card.Body>
+    </Card> 
+  </> 
+)
+
+
+
+class Facebook extends React.Component {
+  state = {user:false}
+  facebookResponse = (response) => { console.log( response ); this.setState( {...this.state, user: response } ) }
+  
+  render() {
+    return (
+      <div style={{ margin: "auto", textAlign: "center", paddingTop: "2em" }}>
+        { this.state.user ? <UserScreen user={this.state.user}/>  :
+          <LoginButton facebookResponse={this.facebookResponse}/>
+        } 
+      </div> 
+    )
+  }
+}
+
+class NameFB extends React.Component{
+  static contextType = FBname;
+  render(){
+    return(
+      this.context
+    )
+  }
+}
+console.log(FBname)
+export {NameFB, UserScreen, LoginButton}
+export default Facebook
