@@ -5,7 +5,7 @@ import './App.css';
 import {BrowserRouter, Router, Route, Link, Redirect} from 'react-router-dom'
 import Facebook  from './components/Facebook'
 import PeopleList from './components/PeopleList'
-import Login from './components/Login'
+import Index from './components/Login'
 import FacebookLoginWithButton from 'react-facebook-login';
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
     if (this.state.user == null) {
       return (
         <div>
-          <Login facebookResponse={this.facebookResponse}/>
+          <Index facebookResponse={this.facebookResponse}/>
         </div>
 
       );
@@ -31,7 +31,7 @@ class App extends React.Component {
       <div>
         <div>
           <Route exact path="/" component={PeopleList} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={Index} />
         </div>
       </div>
     )

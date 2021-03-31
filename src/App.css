@@ -36,3 +36,76 @@
     transform: rotate(360deg);
   }
 }
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.bg {
+  background-image: url(https://i0.wp.com/silentstepsdnbhd.com/wp-content/uploads/2019/04/image01.jpg?w=1638&ssl=1);
+  position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.box {
+  width: 20em;
+  background-color: white;
+  padding: 1em;
+  margin: 0em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.myimg {
+    height: inherit;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.flex-item h1 {
+  text-align: center;
+  font-family: 'Prompt', sans-serif;
+  font-size: 2.3em;
+}
+
+.flex-item h2 {
+  text-align: center;
+  font-family: 'Prompt', sans-serif;
+  font-size: 1.5em;
+}
+
+.row {
+  width: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-item {
+  padding: 2px;
+  margin: 5px;
+  text-align: center;
+}
+
+.vertical-center {
+  margin: 0 auto;
+  padding: 1em;
+  position: relative;
+  transition: transform .2s;
+}
+
+.vertical-center:hover {
+  transform: scale(1.17); 
+}
