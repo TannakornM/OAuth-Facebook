@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import '../index.css';
 import NameFB  from './Facebook'
 import { Card, Image, Button } from 'react-bootstrap';
+import App from '../App'
 console.log("Come onnnnn")
 console.log(NameFB)
+
+const Logout = () => {
+  App.setState = null
+  console.log(App.props)
+}
 
 const UserScreen = ({user})  => (
   <>  
@@ -22,7 +28,7 @@ const UserScreen = ({user})  => (
         <div className='subtext'>
           <Card.Subtitle className="mb-2 text-muted">
             { user.email } &nbsp;  
-            <Button variant="outline-primary">ออกจากระบบ</Button>
+            <Button variant="outline-primary" onClick={Logout} href="/" >ออกจากระบบ</Button>
           </Card.Subtitle>
           </div>
       </div>

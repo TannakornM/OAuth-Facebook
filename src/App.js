@@ -18,8 +18,7 @@ class App extends React.Component {
     componentDidMount() {
       this.facebookResponse()
     }
-
-  render() {
+  render() { console.log(this.state.user)
     if (this.state.user == null) {
       return (
         
