@@ -12,6 +12,31 @@ code {
     monospace;
 }
 /************************************************************************/
+.container {
+  font-family: 'Prompt', sans-serif;
+}
+.con {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.2em;
+  text-align: right;
+}
+.bodycard {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
+.subtext {
+  text-align: right;
+}
+.row {
+  height: 13em;
+}
+.cardbutton {
+  position: absolute; 
+  align-items: flex-end;
+}
 .person {
   background: #eeeeee;
   width: 17rem;

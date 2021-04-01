@@ -11,7 +11,7 @@ import FacebookLoginWithButton from 'react-facebook-login';
 class App extends React.Component {
   constructor(props) {
     super(props)
-      this.state = {user: {}}
+      this.state = {user: null}
     }
     facebookResponse = (response) => { console.log( response ); this.setState( {...this.state, user: response } ) }
 
@@ -32,7 +32,7 @@ class App extends React.Component {
       return (
         <div>
         <Redirect to='/home'/>
-        <PeopleList/>
+        <PeopleList userData={this.state.user} />
         </div>
       )
     }

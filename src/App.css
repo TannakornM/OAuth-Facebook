@@ -52,6 +52,7 @@ body {
     overflow: hidden;
 }
 .box {
+  height: 20em;
   width: 20em;
   background-color: white;
   padding: 1em;
