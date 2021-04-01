@@ -16,12 +16,15 @@ const Login = ({fbResponse}) => (
       fields="name,email,picture"
       onClick={componentClicked}
       callback={fbResponse}
-      icon="fa-facebook"/>
+      icon="fa-facebook"
+      />
+      
     )
 
 const Index = ({facebookResponse}) => {
+    
     return(
-        <div class="bg">
+        <div className="bg">
         <div className='box'>
         <div className="flex-container">
             <div className='row'>
